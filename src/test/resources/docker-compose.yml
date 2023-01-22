@@ -3,3 +3,9 @@ services:
     image: postgres:15-alpine
     ports:
       - 5432:5432
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    ports:
+      - "29092:29092"
+      - "9092:9092"
+      - "9101:9101"

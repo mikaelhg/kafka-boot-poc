@@ -24,7 +24,7 @@ class ApplicationTests {
 
 		@DynamicPropertySource
 		@JvmStatic
-		fun pgProperties(registry: DynamicPropertyRegistry) {
+		fun containerProperties(registry: DynamicPropertyRegistry) {
 			registry.add("spring.datasource.url") { pg.jdbcUrl }
 			registry.add("spring.datasource.username") { pg.username }
 			registry.add("spring.datasource.password") { pg.password }
