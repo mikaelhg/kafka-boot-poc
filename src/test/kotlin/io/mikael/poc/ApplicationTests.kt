@@ -1,6 +1,7 @@
 package io.mikael.poc
 
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
@@ -33,8 +34,18 @@ class ApplicationTests {
 
 	}
 
+	@Autowired
+	lateinit var horseRepository: HorseRepository
+
+	@Autowired
+	lateinit var personRepository: PersonRepository
+
 	@Test
-	fun contextLoads() {
+	fun createHorse() {
+		val person = personRepository.save(Person(
+			id = null, name = "Jeff", email = "jeff@jeff",
+			horses = setOf(Horse(id = null, name = "Pony", stall = 1))))
+		println(personRepository.findById(person.id!!))
 	}
 
 }
